@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/libs/prisma/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Friend {
+  id    Int    @id @default(autoincrement())
+  name  String
+  score Int    @default(0)
+}
