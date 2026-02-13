@@ -2,6 +2,7 @@
 
 import { CreateFriendInput } from '@/app/friend/create/page';
 import prisma from '@/libs/prisma/prisma';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import z from 'zod';
 
@@ -23,7 +24,8 @@ export const createFriend = async (input: CreateFriendInput) => {
   await simulateLoading(5);
   const data = createFriendSchema.parse(input);
   await prisma.friend.create({ data });
-  redirect('/');
+  revalidatePath('/friend');
+  redirect('/friend');
 };
 
 // import { ActionState } from '@/app/friend/create/page';

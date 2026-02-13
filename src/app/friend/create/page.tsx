@@ -27,7 +27,6 @@ export default function CreateFriendPage() {
 
   const onSubmit = (data: CreateFriendInput) => {
     startTransition(async () => {
-      throw Error('BlaBla');
       await createFriend(data);
     });
   };
